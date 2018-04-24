@@ -11,6 +11,11 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300" rel="stylesheet">
   <link rel="stylesheet" href="./_datepicker.css"></link>
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.12/semantic.min.css"></link>
+  <style>
+     #slider-container .slick-list {
+       width: 760px;
+     }
+  </style>
 </head>
 <body>
 <div id="imageService"></div>
@@ -23,6 +28,7 @@
 <div id="similarListing"></div>
 <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<!-- <script  src="https://s3.us-east-2.amazonaws.com/fantasybnb/similiarlistings.js"></script> -->
 <script  src="http://localhost:3333/bundle.js"></script>
 <script  src="http://localhost:8080/bundle.js"></script>
 <script  src="http://localhost:7777/bundle.js"></script>
@@ -30,30 +36,24 @@
 
 <script>
   let locationId = window.location.pathname.split('/')[1];
-  ReactDOM.render(
-        React.createElement(SimilarListings, {currentListingId: locationId}, null),
-        document.getElementById('similarListing')
-      );
-  ReactDOM.render(
-    React.createElement(Booking, {room: locationId}, null),
-    document.getElementById('booking')
-  );
-  ReactDOM.render(
-    React.createElement(Review, {locationId: locationId}, null),
-    document.getElementById('reviews')
-  );
-  ReactDOM.render(
-        React.createElement(ImageService, {locationId: locationId}, null),
-        document.getElementById('imageService')
-      );
 
-  window.onscroll = function(){
+    ReactDOM.render(
+          React.createElement(SimilarListings, {currentListingId: locationId}, null),
+          document.getElementById('similarListing')
+        );
+    ReactDOM.render(
+      React.createElement(Booking, {room: locationId}, null),
+      document.getElementById('booking')
+    );
+    ReactDOM.render(
+      React.createElement(Review, {locationId: locationId}, null),
+      document.getElementById('reviews')
+    );
+    ReactDOM.render(
+          React.createElement(ImageService, {locationId: locationId}, null),
+          document.getElementById('imageService')
+        );
 
-    if(window.scrollY >= 100) { // change target to number
-      document.getElementById('middle').style.position = 'relative';
-    }
-
-  };
 </script>
 
 </body>
